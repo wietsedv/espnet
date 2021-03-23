@@ -72,6 +72,8 @@ HOW2_TEXT=downloads/how2-300h-v1
 HOW2_FEATS=downloads/fbank_pitch_181516
 ZEROTH_KOREAN=downloads
 RU_OPEN_STT=downloads
+GRONINGS_SPRAAK=/net/shared/wietse/data/gro-tts/GroningsSpraak-1.0
+PV_SPRAAK=/net/shared/wietse/data/gro-tts/PVSpraak-1.0
 
 # For only JHU environment
 if [[ "$(hostname -d)" == clsp.jhu.edu ]]; then

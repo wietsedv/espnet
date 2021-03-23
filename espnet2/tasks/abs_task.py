@@ -1238,7 +1238,7 @@ class AbsTask(ABC):
                         id=wandb_id,
                         resume="allow",
                     )
-                    wandb.config.update(args)
+                    wandb.config.update(args, allow_val_change=True)
                 else:
                     # wandb also supports grouping for distributed training,
                     # but we only logs aggregated data,

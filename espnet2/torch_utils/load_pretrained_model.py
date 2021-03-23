@@ -76,6 +76,19 @@ def load_pretrained_model(
             if k.startswith(src_key)
         }
 
+    # tts.dec.feat_out,tts.dec.prob_out
+
     dst_state = obj.state_dict()
+
+    for key in list(src_state.keys()):
+        if src_state[key].shape != dst_state[key].shape:
+            src_shape = src_state[key].shape
+            dst_shape = dst_state[key].shape
+            print(f'"{key}" shapes do not match:', src_shape, dst_shape)
+            if src_shape[0] < dst_shape[0] and src_shape[1:] == dst_shape[1:]:
+                print(f'doing partial override of "{key}"')
+                dst_state[key][:src_shape[0]] = src_state[key]
+                del src_state[key]
+
     dst_state.update(src_state)
     obj.load_state_dict(dst_state)
